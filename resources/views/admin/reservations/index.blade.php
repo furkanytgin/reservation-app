@@ -49,7 +49,12 @@
                             </th>
 
                             <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $reservation->res_date }}
+                                @if($reservation->res_date < now())
+                                    <div class="px-4 ру-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"> {{ $reservation->res_date }}</div>
+                                @else
+                                <div class="px-4 ру-2 bg-green-500 hover:bg-green-700 rounded-lg text-white"> {{ $reservation->res_date }}</div>
+                                @endif
+
                             </th>
 
                             <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">

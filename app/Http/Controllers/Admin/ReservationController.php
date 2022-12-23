@@ -19,8 +19,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::all();
-
+        $reservations = Reservation::orderBy('created_at', 'desc')->get();
+        // eğer geçtişteki değilde sadece bugün ve sonraki reservasyonları görmek istersen admin tarafında
+        //->where('res_date', '<=', now()) bunu kullan.
         return view('admin.reservations.index', compact('reservations'));
     }
 
